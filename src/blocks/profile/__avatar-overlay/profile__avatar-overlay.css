@@ -1,0 +1,18 @@
+.profile__avatar-overlay {
+  background-image: url(../../../images/profile-avatar-edit-button.svg), linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .8));
+  min-width: 120px;
+  min-height: 120px;
+  border-radius: 50%;
+  display: flex;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+  transition: .2s ease-out;
+}
+
+.profile__avatar-overlay:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+

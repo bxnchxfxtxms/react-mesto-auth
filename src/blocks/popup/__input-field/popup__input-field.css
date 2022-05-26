@@ -1,0 +1,23 @@
+.popup__input-field {
+  outline: none;
+  border: none;
+  padding-bottom: 13px;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+  width: 358px;
+  font-style: normal;
+  font-weight: normal;
+  color: #000;
+  font-size: 14px;
+  line-height: 17px;
+  margin: 0;
+}
+
+.popup__input-field::placeholder {
+  color: #C4C4C4;
+}
+
+@media screen and (max-width: 600px) {
+  .popup__input-field {
+    width: 238px;
+  }
+}
