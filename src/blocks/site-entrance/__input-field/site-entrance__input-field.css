@@ -1,0 +1,14 @@
+.site-entrance__input-field {
+  background-color: #000;
+  outline: none;
+  border: none;
+  padding-bottom: 13px;
+  border-bottom: 2px solid #ccc;
+  min-width: 358px;
+  font-style: normal;
+  font-weight: normal;
+  color: #ccc;
+  font-size: 14px;
+  line-height: 17px;
+  margin: 0 0 30px;
+}

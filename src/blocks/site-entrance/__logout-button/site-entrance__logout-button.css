@@ -1,0 +1,10 @@
+.site-entrance__logout-button {
+  border: none;
+  background: none;
+  color: #a9a9a9;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  margin: 0 0 0 24px;
+}

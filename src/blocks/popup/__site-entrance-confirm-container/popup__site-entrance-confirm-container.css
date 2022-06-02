@@ -1,0 +1,7 @@
+.popup__site-entrance-confirm-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 330px;
+  margin: 0;
+  align-self: center;
+}
