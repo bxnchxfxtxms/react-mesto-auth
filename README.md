@@ -90,4 +90,4 @@
 
  
 
-https://bxnchxfxtxms.github.io/mesto/
+https://bxnchxfxtxms.github.io/react-mesto-auth/
