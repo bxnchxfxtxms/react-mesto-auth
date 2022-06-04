@@ -34,7 +34,6 @@ class Auth {
     .then((res) => {
       return res
     })
-    .catch((err) => console.log(err))
   }
   
   getContent = jwt => {
@@ -48,6 +47,7 @@ class Auth {
     })
     .then(res => res.json())
     .then(data => data)
+    .catch((err) => console.log(err))
   } 
 }
 

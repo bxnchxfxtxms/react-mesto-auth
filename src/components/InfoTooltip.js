@@ -10,12 +10,12 @@ class InfoTooltip extends React.Component {
 
   render() {
     return(
-      <section className={`popup popup_type_${this.props.name} ${this.props.isOpen ? 'popup_opened' : ''}`}>
+      <section className={`popup popup_type_${this.props.name} ${this.props.isOpen && 'popup_opened'}`}>
         <div className="popup__container">
           <button className="popup__close-button" type="button" onClick={this.props.onClose}></button>
           <figure className="popup__site-entrance-confirm-container">
-            <img className="popup__site-entrance-confirm-icon" src={this.props.authorizationSuccess ? successIcon : failureIcon}/>
-            <figcaption className="popup__site-entrance-confirm-message">{this.props.authorizationSuccess ? `Вы успешно зарегистрировались!` : `Что-то пошло не так`}</figcaption>
+            <img className="popup__site-entrance-confirm-icon" alt='' src={this.props.authorizationSuccess ? successIcon : failureIcon}/>
+            <figcaption className="popup__site-entrance-confirm-message">{this.props.authorizationSuccess ? this.props.successMessage : this.props.failureMessage}</figcaption>
           </figure>
         </div>
       </section>

@@ -181,7 +181,7 @@ class App extends React.Component {
     auth.register(data.email, data.password)
     .then((res) => {
       if (res) {
-        localStorage.setItem('token', res.data._id)
+        // localStorage.setItem('token', res.data._id)
         this.setState({
           authorizationSuccess: true,
           isInfoTooltipOpen: true
@@ -198,44 +198,53 @@ class App extends React.Component {
       console.log(err)
     })
   }
-
+  
   tokenCheck = () => {
-    if (localStorage.getItem('jwt')){
+    // if (localStorage.getItem('jwt')){
       const jwt = localStorage.getItem('jwt');
       if (jwt){
-        auth.getContent(jwt).then((res) => {
+        auth.getContent(jwt)
+        .then((res) => {
           if (res){
             this.setState({
               email: res.data.email,
               loggedIn: true,
             }, () => {
               this.props.history.push("/");
-            });
+            })
           }
-        });
-      }
-    } 
-  }
-
-  handleLogin = data => {
-    this.setState({
-      authorizationData: {
-        email: data.email,
-        _id: data._id
-      }
-    })
-    auth.authorize(data.email, data.password)
-    .then((res) => {
-      if (res.token) {
-        localStorage.setItem('jwt', res.token)
-        this.setState({
-          loggedIn: true,
         })
-        this.props.history.push('/')
+        .catch(err => { 
+          console.log(err)
+        })
       }
-    })
-    .catch(err => { 
-      console.log(err)
+      // } 
+    }
+    
+    handleLogin = data => {
+      this.setState({
+        authorizationData: {
+          email: data.email,
+          _id: data._id
+        }
+      })
+      auth.authorize(data.email, data.password)
+      .then((res) => {
+        if (res.token) {
+          localStorage.setItem('jwt', res.token)
+          this.setState({
+            loggedIn: true,
+            email: data.email
+          })
+          this.props.history.push('/')
+        }
+      })
+      .catch(err => { 
+        console.log(err)
+        this.setState({
+          authorizationSuccess: false,
+          isInfoTooltipOpen: true  
+      })
     })
   }
   
@@ -280,7 +289,7 @@ class App extends React.Component {
                 onClose={this.closeAllPopups}
                 isOpen={this.state.isAddPlacePopupOpen}
                 onAddPlace={this.handleAddPlaceSubmit}
-              />
+                />
 
               <EditProfilePopup
                 name={'edit-profile'}
@@ -289,7 +298,7 @@ class App extends React.Component {
                 isOpen={this.state.isEditProfilePopupOpen}
                 onClose={this.closeAllPopups}
                 onUpdateUser={this.handleUpdateUser}
-              />
+                />
 
               <EditAvatarPopup
                 name={'change-avatar'}
@@ -298,21 +307,21 @@ class App extends React.Component {
                 onClose={this.closeAllPopups}
                 isOpen={this.state.isEditAvatarPopupOpen}
                 onUpdateAvatar={this.handleUpdateAvatar}
-              />
+                />
 
               <PopupWithForm
                 name={'card-delete-confirm'}
                 title={'Вы уверены?'}
                 buttonText={'Да'}
-              >
+                >
               </PopupWithForm>
 
               <ImagePopup
                 card={this.state.selectedCard}
                 onClose={this.closeAllPopups}
-              />
+                />
 
-            </ProtectedRoute>
+                </ProtectedRoute>
             <Route path="/sign-up">
               <Register
                 onRegister={this.handleRegister}
@@ -331,6 +340,8 @@ class App extends React.Component {
                 isOpen={this.state.isInfoTooltipOpen}
                 onClose={this.closeAllPopups}
                 authorizationSuccess={this.state.authorizationSuccess}
+                successMessage='Вы успешно зарегистрировались!'
+                failureMessage='Что-то пошло не так'
               />
         </CurrentUserContext.Provider>
       </div>    
